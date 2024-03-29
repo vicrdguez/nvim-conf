@@ -31,52 +31,9 @@ local tel_act = require('lib.search').tel_act
             { "<leader>dws", tel("lsp_wokspace_symbols"),               desc = "Goto symbol" },
             {"gd", tel("lsp_definitions"), desc = "Goto definition"},
             {"gr", tel("lsp_references"), desc = "Goto references"},
-
-opts = {
-            defaults = {
-                file_ignore_patterns = {
-                    "^lazy-lock"
-                },
-                prompt_prefix = "::: ",
-                selection_carret = ' ',
-                mappings = {
-                    i = {
-                        ["<C-j>"] = "move_selection_next",
-                        ["<C-k>"] = "move_selection_previous",
-                        ["<C-l>"] = tel_act({ "send_to_qflist", "open_qflist" }),
-                        ["<C-c>"] = tel_act("close")
-                    }
-                },
-                layout_strategy = "bottom_pane",
-                layout_config = {
-                    height = 20,
-                },
-                border = true,
-                sorting_strategy = "ascending",
-            },
-            extensions = {
-                fzf = {
-                    fuzzy = true,                   -- false will only do exact matching
-                    override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true,    -- override the file sorter
-                    case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                    -- the default case_mode is "smart_case"
-                }
-            }
-        },
-        config = function(_, opts)
-            local telescope = require("telescope")
-            -- setup telescope
-            telescope.setup(opts)
-            -- Load all extensions
-            telescope.load_extension("ui-select")
-            telescope.load_extension('fzf')
-            telescope.load_extension('media_files')
-            -- telescope.load_extension("file_browser")
-        end
-    },
 --]]
 
+-- [[ Telescope keymaps ]]
 nmap('<leader>,', tel('find_files'), { desc = 'Find files (root dir)' })
 nmap('<leader>/', tel('current_buffer_fuzzy_find'), { desc = 'Find files (root dir)' })
 nmap('<leader>sg', tel('live_grep', { cwd = false }), { desc = 'Grep files (cwd)' })
