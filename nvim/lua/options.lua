@@ -76,5 +76,7 @@ opt.wrap = true
 opt.conceallevel = 3
 opt.textwidth = 0
 
-print("These are options")
-
+-- @class 
+opt.colorcolumn = "100"
+-- opt.colorcolumn.guifg = "Grey"
+-- opt.colorcolumn.guibg = "1"

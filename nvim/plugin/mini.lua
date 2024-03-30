@@ -1,39 +1,65 @@
 -- [[ Mini statusline]]
---
+-- Simple statusline, might change to something fancier in the future
 local statusline = require('mini.statusline')
-local statusline_opts = {
-}
 
-function filename_section(args)
+local function filename_section(args)
     if vim.bo.buftype == 'terminal' then
         return '%t'
     elseif statusline.is_truncated(args.trunc_width) then
         return '%f%m%r'
-    else 
+    else
         return '%t%m%r'
     end
 end
 
-function statusline_content()
-    local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
-    local git           = MiniStatusline.section_git({ trunc_width = 75 })
-    local diagnostics   = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-    local filename      = filename_section({ trunc_width = 140 })
-    local fileinfo      = MiniStatusline.section_fileinfo({ trunc_width = 120 })
-    local location      = MiniStatusline.section_location({ trunc_width = 75 })
-    local search        = MiniStatusline.section_searchcount({ trunc_width = 75 })
+statusline.setup { use_icons = true }
+statusline.section_filename = filename_section
 
-    return MiniStatusline.combine_groups({
-      { hl = mode_hl,                  strings = { mode } },
-      { hl = 'MiniStatuslineDevinfo',  strings = { git, diagnostics } },
-      '%<', -- Mark general truncate point
-      { hl = 'MiniStatuslineFilename', strings = { filename } },
-      '%=', -- End left alignment
-      { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-      { hl = mode_hl,                  strings = { search, location } },
-    })
-end
+-- [[ Mini AI ]]
+-- Better arround/inside navigation
+require('mini.ai').setup { n_lines = 500 }
 
+-- [[ Mini surround ]]
+-- Manipulate surround characters on selected text (quotes, brackets, etc...)
+require('mini.surround').setup {}
 
+-- [[ Mini comment ]]
+-- gc(c) for commenting code
+require('mini.comment').setup {}
 
-statusline.setup()
+-- [[ Mini jump ]]
+-- Improves f,F,t and T jumps
+require('mini.jump').setup {}
+
+-- [[ Mini splitjoin ]]
+-- Join args and lists, or split them with gS
+require('mini.splitjoin').setup {}
+
+-- [[ Mini pairs ]]
+-- Auto-match charachter pairs
+require('mini.pairs').setup {}
+
+-- [[ Mini hipatterns ]]
+-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE' comments
+require('mini.hipatterns').setup({
+    highlighters = {
+        fixme     = {
+            pattern = '%f[%w]()FIXME()%f[%W]',
+            group = 'MiniHipatternsFixme'
+        },
+        hack      = {
+            pattern = '%f[%w]()HACK()%f[%W]',
+            group = 'MiniHipatternsHack'
+        },
+        todo      = {
+            pattern = '%f[%w]()TODO()%f[%W]',
+            group = 'MiniHipatternsTodo'
+        },
+        note      = {
+            pattern = '%f[%w]()NOTE()%f[%W]',
+            group = 'MiniHipatternsNote'
+        },
+        -- Highlight hex color strings (`#rrggbb`) using that color
+        hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
+    },
+})

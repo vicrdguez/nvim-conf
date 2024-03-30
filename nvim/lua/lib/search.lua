@@ -41,7 +41,7 @@ function M.fzf(builtin, opts)
 end
 
 function M.fzf_act(actions)
-    return function (selected, opts)
+    return function(selected, opts)
         local fzf_actions = require("fzf-lua.actions")
         if type(actions) == "table" then
             for _, action in pairs(actions) do

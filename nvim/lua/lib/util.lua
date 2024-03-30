@@ -84,6 +84,10 @@ function M.augroup(name)
     return vim.api.nvim_create_augroup("vic-" .. name, { clear = true })
 end
 
+function M.au(events, opts)
+    vim.api.nvim_create_autocmd(events, opts)
+end
+
 -- Concats 2 lists together, appending values of t2 at the end of t1
 -- if @copy is set to true, the returned table is a brand new copy, so the original t1 is not modified
 -- if any of both tables is nil or empty, the other or an empty table is returned instead

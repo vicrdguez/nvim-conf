@@ -41,6 +41,8 @@ rec {
 
   lsp = with pkgs.vimPlugins; [
     lspkind-nvim
+    nvim-lspconfig
+    fidget-nvim
   ];
 
   search = with pkgs.vimPlugins; [
@@ -54,6 +56,8 @@ rec {
   ];
 
   misc = with pkgs.vimPlugins; [
+    # using all grammars for now, maybe later I'll chose just the specific ones I use
+    # https://discourse.nixos.org/t/psa-if-you-are-on-unstable-try-out-nvim-treesitter-withallgrammars/23321/5
     nvim-treesitter.withAllGrammars
     luasnip
     gitsigns-nvim
@@ -62,11 +66,13 @@ rec {
     nvim-web-devicons
     oil-nvim
     mini-nvim
+    conform-nvim
   ];
 
   # language servers, etc.
   extraPackages = with pkgs; [
     lua-language-server
-    nil # nix LSP
+    #nil # nix LSP
+    nixd
   ];
 }

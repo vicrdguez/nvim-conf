@@ -47,10 +47,13 @@ local opts = {
              -- TelescopePreviewNormal = { bg = col.sumiInk0 },
              -- TelescopePreviewBorder = { bg = col.sumiInk0, fg = col.sumiInk0 },
 
-	     MiniStatuslineModeNormal = { bg = col.dragonYellow, fg = col.dragonBlack3 },
-	     MiniStatuslineModeInsert = { bg = col.dragonGrey, fg = col.dragonBlack3 },
-	     MiniStatuslineModeVisual = { bg = col.dragonGreen, fg = col.dragonBlack3 },
-	     MiniStatuslineModeReplace = { bg = col.dragonPink, fg = col.dragonBlack3 },
+             MiniStatuslineModeNormal = { bg = col.dragonYellow, fg = col.dragonBlack3 },
+             MiniStatuslineModeInsert = { bg = col.dragonGrey, fg = col.dragonBlack3 },
+             MiniStatuslineModeVisual = { bg = col.dragonGreen, fg = col.dragonBlack3 },
+             MiniStatuslineModeReplace = { bg = col.dragonPink, fg = col.dragonBlack3 },
+
+             luaTodo = { bg = "none", },
+             Todo = { bg = "none", },
 
              FzfLuaTitle            = { fg = col.springViolet1, bold = true },
              FzfLuaNormal           = { fg = col.oldWhite, bg = col.sumiInk2 },

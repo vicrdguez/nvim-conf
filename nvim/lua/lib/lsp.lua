@@ -3,8 +3,18 @@
 ---@brief [[
 ---LSP related functions
 ---@brief ]]
+local nmap = require('lib.util').nmap
+local tel = require('lib.search').tel
 
 local M = {}
+
+function M.is_ls_present(server_bin)
+    if vim.fn.executable(server_bin) ~= 1 then
+        vim.notify('Language Sever ['..server_bin..'] is not present in the system', vim.log.levels.WARN)
+        return false
+    end
+    return true
+end
 
 ---Gets a 'ClientCapabilities' object, describing the LSP client capabilities
 ---Extends the object with capabilities provided by plugins.
@@ -18,6 +28,36 @@ function M.make_client_capabilities()
   -- Add any additional plugin capabilities here.
   -- Make sure to follow the instructions provided in the plugin's docs.
   return capabilities
+end
+
+-- Default LSP on_attach function to run on the designed autocmd
+function M.default_on_attach(event)
+    nmap('<leader>da', tel('actions'), { desc = 'Search Code actions' })
+    nmap('<leader>dd', tel('diagnostics'), { desc = 'Search Diagnostics' })
+    nmap('<leader>df', function() vim.lsp.buf.format({async = true}) end, { desc = 'Search Diagnostics' })
+    nmap('<leader>dr', vim.lsp.buf.rename, { desc = 'Rename symbol under cursor' })
+    nmap('<leader>ds', tel('lsp_document_symbols'), { desc = 'Search symbol in file' })
+    nmap('<leader>dws', tel('lsp_dynamic_workspace_symbols'), { desc = 'Search symbol in workspace' })
+    nmap('K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
+    nmap('gD', vim.lsp.buf.declaration, { desc = 'Goto declaration' })
+    nmap('gd', tel('lsp_definitions'), { desc = 'Go to definition' })
+    nmap('gr', tel('lsp_references'), { desc = 'Go to reference' })
+
+    -- Highlight references of the word under the cursor after some time.
+    -- Highlights clear when moving the cursor again. 
+    -- - :help CursorHold
+    -- - https://github.com/nvim-lua/kickstart.nvim/blob/93fde0556e82ead2a5392ccb678359fa59437b98/init.lua#L509
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
+            buffer = event.buf,
+            callback = vim.lsp.buf.document_highlight
+        })
+        vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI'}, {
+            buffer = event.buf,
+            callback = vim.lsp.buf.clear_references,
+        })
+    end
 end
 
 return M

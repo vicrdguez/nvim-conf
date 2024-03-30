@@ -2,6 +2,12 @@ local nmap = require('lib.util').nmap
 local tel = require('lib.search').tel
 local tel_act = require('lib.search').tel_act
 
+function load_extension(name)
+    if not pcall(require('telescope').load_extension, name) then
+        vim.notify("Tried to load '"..name.."' telescope extension but its not present on the system", vim.log.levels.WARN)
+    end
+end
+
 --[[
 --            -- special
             { "<leader><space>", tel("buffers", { show_all_buffers = true }), desc = "Switch buffer" },
@@ -34,9 +40,26 @@ local tel_act = require('lib.search').tel_act
 --]]
 
 -- [[ Telescope keymaps ]]
+-- Files and buffers
+nmap('<leader><leader>', tel('buffers', { show_all_buffers = true }), { desc = 'Switch buffers'})
 nmap('<leader>,', tel('find_files'), { desc = 'Find files (root dir)' })
+nmap('<leader>.', tel('find_files', {cwd = true}), {desc = 'Find files (cwd)'})
+nmap('<leader>fr', tel('old_files', {cwd = true}), {desc = 'Find recent files'})
+nmap('<leader>fg', tel('git_files', {cwd = true}), {desc = 'Find git files'})
+-- Search
 nmap('<leader>/', tel('current_buffer_fuzzy_find'), { desc = 'Find files (root dir)' })
 nmap('<leader>sg', tel('live_grep', { cwd = false }), { desc = 'Grep files (cwd)' })
+nmap('<leader>sG', tel('live_grep'), { desc = 'Grep files (root dir)' })
+--help
+nmap('<leader>hh', tel('help_tags'), { desc = 'Seach help pages' })
+nmap('<leader>ht', tel('colorscheme', {enable_preview = true, previewer = false}), { desc = 'Search colorschemes' })
+nmap('<leader>hm', tel('man_pages'), { desc = 'Search man pages' })
+nmap('<leader>hk', tel('keymaps'), { desc = 'Search keymaps' })
+-- commands
+nmap('<leader>;', tel('commands'), { desc = 'Search commands' })
+nmap('<leader>:', tel('command_history'), { desc = 'Command history' })
+-- others
+nmap("<leader>'", tel('resume'), { desc = 'Resume last search' })
 
 local opts = {
             defaults = {
@@ -69,11 +92,8 @@ local opts = {
         }
 
 require('telescope').setup(opts)
+
 -- Extensions
-if not pcall(require('telescope').load_extension, 'fzf') then
-    vim.notify("Tried to load 'fzf' telescope extension but its not present on the system", vim.log.levels.WARN)
-end
-if not pcall(require('telescope').load_extension, 'ui-select') then
-    vim.notify("Tried to load 'ui-select' telescope extension but its not present on the system", vim.log.levels.WARN)
-end
+load_extension('fzf')
+load_extension('ui-select')
 
