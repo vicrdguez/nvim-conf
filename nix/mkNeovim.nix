@@ -87,6 +87,25 @@ let
         lib.all (regex: builtins.match regex relPath == null) ignoreConfigRegexes;
     };
 
+  jdtls_extensions = pkgs.callPackage ./jdtls.nix { };
+
+  # We need to access the paths of the java debug and test adapters, from the nixstore
+  # this paths are dynamic as the version of the adapters change, and thus we can't hardcode them
+  # this file will just return a simple lua table that contains the paths, so we can pull them in from
+  # the jdtls config (maybe from more places in the future)
+  lua_vars = pkgs.writeText "vars.lua" /*lua*/''
+    return {
+            jdtls_path = "${pkgs.jdt-language-server}",
+            java_11_path = "${pkgs.jdk11}",
+            java_17_path = "${pkgs.jdk17}",
+            java_21_path = "${pkgs.jdk}",
+            java_debug_path = "${jdtls_extensions.java_debug}",
+            java_test_path = "${jdtls_extensions.java_test}",
+            google_java_style = "${jdtls_extensions.eclipse-java-google-style}",
+            google_java_format = "${pkgs.google-java-format}/bin/google-java-format",
+        }
+  '';
+
   # Split runtimepath into 3 directories:
   # - lua, to be prepended to the rtp at the beginning of init.lua
   # - nvim, containing plugin, ftplugin, ... subdirectories
@@ -106,6 +125,7 @@ let
       cp -r after $out/after
       rm -r after
       cp -r lua $out/lua
+      cp -r ${lua_vars} $out/lua/lua/vars.lua
       rm -r lua
       cp -r * $out/nvim
     '';

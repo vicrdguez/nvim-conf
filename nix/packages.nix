@@ -10,7 +10,7 @@
 # 
 # bleeding-edge plugins from flake inputs e.g.
 # (mkNvimPlugin inputs.wf-nvim "wf.nvim") 
-{ pkgs, inputs}:
+{ pkgs, inputs }:
 let
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
@@ -20,13 +20,6 @@ let
     };
 in
 rec {
-  all =
-    cmp ++
-    lsp ++
-    search ++
-    themes ++
-    misc;
-
   cmp = with pkgs.vimPlugins; [
     nvim-cmp
     cmp-nvim-lsp
@@ -53,6 +46,7 @@ rec {
 
   themes = with pkgs.vimPlugins; [
     kanagawa-nvim
+    rose-pine
   ];
 
   misc = with pkgs.vimPlugins; [
@@ -67,12 +61,28 @@ rec {
     oil-nvim
     mini-nvim
     conform-nvim
+    nvim-jdtls
   ];
 
-  # language servers, etc.
-  extraPackages = with pkgs; [
+  language_servers = with pkgs; [
     lua-language-server
-    #nil # nix LSP
+    # nix LSP that uses nix c++ core code
     nixd
+    # Java ls by eclipse
+    jdt-language-server
   ];
+  formatters = with pkgs;[
+    stylua
+  ];
+
+  all =
+    cmp ++
+    lsp ++
+    search ++
+    themes ++
+    misc;
+
+  extraPackages =
+    language_servers ++
+    formatters;
 }

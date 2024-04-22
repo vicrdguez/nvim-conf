@@ -1,1 +1,1 @@
-require('servers.nix')
+require('servers.nixd')

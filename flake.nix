@@ -1,19 +1,5 @@
 {
   description = "Personal nvim config with nix flakes. Based on kickstart-nix.nvim";
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
-
-    # Add bleeding-edge plugins here.
-    # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
-  };
-
   outputs = inputs @ { self, nixpkgs, flake-utils, gen-luarc, ... }:
     let
       supportedSystems = [
@@ -77,4 +63,27 @@
       # You can add this overlay to your NixOS configuration
       overlays.default = neovim-overlay;
     };
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+    gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
+    # Java debug server used by DAP. Borrowed by vscode
+    java-debug = {
+      url = "github:microsoft/java-debug";
+      flake = false;
+    };
+    # vscode test runner and debuger plugin that we can plug to jdtls 
+    java-test = {
+      url = "github:microsoft/vscode-java-test";
+      flake = false;
+    };
+    # Add bleeding-edge plugins here.
+    # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
+    # wf-nvim = {
+    #   url = "github:Cassin01/wf.nvim";
+    #   flake = false;
+    # };
+  };
+
 }

@@ -1,13 +1,13 @@
 local nmap = require('lib.util').nmap
 
 local opts = {
-  default_file_explorer = true,
-  columns = {
-    'permissions',
-    'size',
-    'icon'
-  },
-  view_options = { show_hidden = true }
+    default_file_explorer = true,
+    columns = {
+        'permissions',
+        'size',
+        'icon'
+    },
+    view_options = { show_hidden = true }
 }
 
 -- [[ keymaps ]]

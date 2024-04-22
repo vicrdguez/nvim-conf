@@ -12,7 +12,7 @@ with final.pkgs.lib; let
 
   # This is the helper function that builds the Neovim derivation.
   mkNeovim = pkgs.callPackage ./mkNeovim.nix { };
-  plugins = import ./nvim-plugins.nix { inherit inputs pkgs; };
+  plugins = import ./packages.nix { inherit inputs pkgs; };
 in
 {
   # This is the neovim derivation

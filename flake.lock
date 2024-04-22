@@ -55,6 +55,38 @@
         "type": "github"
       }
     },
+    "java-debug": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711428427,
+        "narHash": "sha256-1RAzbR1EK1dDzx2bDzZwzFZXCIISnil2NxigBSCp0Ls=",
+        "owner": "microsoft",
+        "repo": "java-debug",
+        "rev": "37d4e66c5717179b1487ff72fcbc8622b31a3648",
+        "type": "github"
+      },
+      "original": {
+        "owner": "microsoft",
+        "repo": "java-debug",
+        "type": "github"
+      }
+    },
+    "java-test": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710722577,
+        "narHash": "sha256-rrp14UO6GC2t1baQjzHfdaXCRLoUK9tcQhsqWRxvdkU=",
+        "owner": "microsoft",
+        "repo": "vscode-java-test",
+        "rev": "650af8a92122ac2794e69d85bc7b950e1b5a00e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "microsoft",
+        "repo": "vscode-java-test",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1708475490,
@@ -109,6 +141,8 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
+        "java-debug": "java-debug",
+        "java-test": "java-test",
         "nixpkgs": "nixpkgs_2"
       }
     },
