@@ -58,11 +58,11 @@
     "java-debug": {
       "flake": false,
       "locked": {
-        "lastModified": 1711428427,
-        "narHash": "sha256-1RAzbR1EK1dDzx2bDzZwzFZXCIISnil2NxigBSCp0Ls=",
+        "lastModified": 1712735946,
+        "narHash": "sha256-JEzq0znCToAOx6LrSESOc8y0/zdiuVLnSmvXGt7/RaM=",
         "owner": "microsoft",
         "repo": "java-debug",
-        "rev": "37d4e66c5717179b1487ff72fcbc8622b31a3648",
+        "rev": "83403a458e0d01fba5a3871fea81af742460bdf0",
         "type": "github"
       },
       "original": {
@@ -74,11 +74,11 @@
     "java-test": {
       "flake": false,
       "locked": {
-        "lastModified": 1710722577,
-        "narHash": "sha256-rrp14UO6GC2t1baQjzHfdaXCRLoUK9tcQhsqWRxvdkU=",
+        "lastModified": 1712276835,
+        "narHash": "sha256-c8kDV47I4S+cYtE5FoIIQbWOq6KJbfyZdv6azLWJonI=",
         "owner": "microsoft",
         "repo": "vscode-java-test",
-        "rev": "650af8a92122ac2794e69d85bc7b950e1b5a00e0",
+        "rev": "a30b06e54ce878ca957c4e5d61d8079e2cd825bb",
         "type": "github"
       },
       "original": {
@@ -123,11 +123,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1711523803,
-        "narHash": "sha256-UKcYiHWHQynzj6CN/vTcix4yd1eCu1uFdsuarupdCQQ=",
+        "lastModified": 1713537308,
+        "narHash": "sha256-XtTSSIB2DA6tOv+l0FhvfDMiyCmhoRbNB+0SeInZkbk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2726f127c15a4cc9810843b96cad73c7eb39e443",
+        "rev": "5c24cf2f0a12ad855f444c30b2421d044120c66f",
         "type": "github"
       },
       "original": {
