@@ -70,9 +70,12 @@ rec {
     nixd
     # Java ls by eclipse
     jdt-language-server
+    # yaml ls
+    yaml-language-server
   ];
   formatters = with pkgs;[
     stylua
+    yamlfmt
   ];
 
   all =
