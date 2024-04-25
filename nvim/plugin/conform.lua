@@ -5,6 +5,7 @@ require('conform').setup {
     formatters_by_ft = {
         lua = { 'stylua' },
         nix = { 'nixpkgs_fmt' },
+        yaml = { 'yamlfmt' }
     },
     formatters = {
         ["google-java-format"] = {
@@ -17,4 +18,4 @@ require('conform').setup {
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 -- Adding the format keymap here for files that have formatter but no lsp configured
-nmap('<leader>df', require('conform').format, { desc = 'Format buffer'})
+nmap('<leader>df', require('conform').format, { desc = 'Format buffer' })

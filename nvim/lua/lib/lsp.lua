@@ -34,7 +34,7 @@ end
 function M.default_on_attach(event)
     nmap('<leader>da', tel('actions'), { desc = 'Search Code actions' })
     nmap('<leader>dd', tel('diagnostics'), { desc = 'Search Diagnostics' })
-    nmap('<leader>df', function() vim.lsp.buf.format({async = true}) end, { desc = 'Search Diagnostics' })
+    --nmap('<leader>df', function() vim.lsp.buf.format({async = true}) end, { desc = 'Search Diagnostics' })
     nmap('<leader>dr', vim.lsp.buf.rename, { desc = 'Rename symbol under cursor' })
     nmap('<leader>ds', tel('lsp_document_symbols'), { desc = 'Search symbol in file' })
     nmap('<leader>dws', tel('lsp_dynamic_workspace_symbols'), { desc = 'Search symbol in workspace' })
