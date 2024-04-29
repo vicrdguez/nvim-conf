@@ -72,6 +72,7 @@ rec {
     jdt-language-server
     # yamlls
     yaml-language-server
+    gopls
   ];
   formatters = with pkgs;[
     stylua
