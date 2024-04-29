@@ -62,7 +62,7 @@
     {
       # You can add this overlay to your NixOS configuration
       overlays.default = neovim-overlay;
-      modules.home-manager = { pkgs, lib, config }: {
+      modules.home-manager = { pkgs, lib, config, ... }: {
         nixpkgs.overlays = [ neovim-overlay ];
         programs.neovim = {
           enable = true;
