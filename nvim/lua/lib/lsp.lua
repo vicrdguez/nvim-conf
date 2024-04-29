@@ -32,7 +32,7 @@ end
 
 -- Default LSP on_attach function to run on the designed autocmd
 function M.default_on_attach(event)
-    nmap('<leader>da', tel('actions'), { desc = 'Search Code actions' })
+    nmap('<leader>da', vim.lsp.buf.code_action , { desc = 'Search Code actions' })
     nmap('<leader>dd', tel('diagnostics'), { desc = 'Search Diagnostics' })
     --nmap('<leader>df', function() vim.lsp.buf.format({async = true}) end, { desc = 'Search Diagnostics' })
     nmap('<leader>dr', vim.lsp.buf.rename, { desc = 'Rename symbol under cursor' })
