@@ -126,21 +126,21 @@ cmp.setup {
       },
     },
   },
-  sorting = {
-    -- default cmp comparators, just changing 'kind' for the custom kind comparator
-    comparators = {
-      compare.exact,
-      compare.offset,
-      -- compare.scopes,
-      compare.score,
-      compare.recently_used,
-      compare.locality,
-      lspkind_comparator(kind_priority), --compare.kind,
-      -- compare.sort_text,
-      compare.length,
-      compare.order,
-    },
-  },
+  -- sorting = {
+  --   -- default cmp comparators, just changing 'kind' for the custom kind comparator
+  --   comparators = {
+  --     compare.exact,
+  --     compare.offset,
+  --     -- compare.scopes,
+  --     compare.score,
+  --     compare.recently_used,
+  --     compare.locality,
+  --     lspkind_comparator(kind_priority), --compare.kind,
+  --     -- compare.sort_text,
+  --     compare.length,
+  --     compare.order,
+  --   },
+  -- },
   view = {
     entries = {
       follow_cursor = true,
