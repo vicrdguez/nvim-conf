@@ -27,6 +27,10 @@ opt.breakindent = true
 -- Save undo history
 opt.undofile = true
 
+-- No swap files, it is annoying everytime you open a file
+-- TODO find some nice undo plugins to improve undo ux
+opt.swapfile = false
+
 -- Search is case-insensitive unless \C or one or more capitals in the search
 opt.ignorecase = true
 opt.smartcase = true
