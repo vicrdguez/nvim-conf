@@ -24,3 +24,5 @@
 --  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
 --  capabilities = require('lib.lsp').make_client_capabilities(),
 --}
+--
+vim.bo.commentstring = '#%s'

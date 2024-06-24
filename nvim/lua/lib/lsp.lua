@@ -33,15 +33,11 @@ end
 -- Default LSP on_attach function to run on the designed autocmd
 function M.default_on_attach(event)
     nmap('<leader>da', vim.lsp.buf.code_action , { desc = 'Search Code actions' })
-    nmap('<leader>dd', tel('diagnostics'), { desc = 'Search Diagnostics' })
     --nmap('<leader>df', function() vim.lsp.buf.format({async = true}) end, { desc = 'Search Diagnostics' })
     nmap('<leader>dr', vim.lsp.buf.rename, { desc = 'Rename symbol under cursor' })
-    nmap('<leader>ds', tel('lsp_document_symbols'), { desc = 'Search symbol in file' })
-    nmap('<leader>dws', tel('lsp_dynamic_workspace_symbols'), { desc = 'Search symbol in workspace' })
     nmap('K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
     nmap('gD', vim.lsp.buf.declaration, { desc = 'Goto declaration' })
-    nmap('gd', tel('lsp_definitions'), { desc = 'Go to definition' })
-    nmap('gr', tel('lsp_references'), { desc = 'Go to reference' })
+    nmap('gk', vim.diagnostic.open_float, { desc = 'Diagnostics float' })
 
     -- Highlight references of the word under the cursor after some time.
     -- Highlights clear when moving the cursor again. 

@@ -42,6 +42,7 @@ rec {
     telescope-nvim
     telescope-fzf-native-nvim
     telescope-ui-select-nvim
+    fzf-lua
   ];
 
   themes = with pkgs.vimPlugins; [
@@ -83,6 +84,12 @@ rec {
     cmp ++
     lsp ++
     search ++
+    themes ++
+    misc;
+
+  allNoSearch =
+    cmp ++
+    lsp ++
     themes ++
     misc;
 

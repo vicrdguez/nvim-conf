@@ -33,12 +33,12 @@ in
   #
   # For example:
   #
-  # nvim-custom-no-telescope = mkNeovim {
-  #   plugins = [];
-  #   ignoreConfigRegexes = [
-  #     "^plugin/telescope.lua"
-  #     "^ftplugin/.*.lua"
-  #   ];
-  #   inherit extraPackages;
-  # };
+  nvim-custom-fzf = mkNeovim {
+    plugins = plugins.allNoSearch ++ [ pkgs.vimPlugins.fzf-lua ];
+    ignoreConfigRegexes = [
+      "^plugin/telescope.lua"
+      # "^ftplugin/.*.lua"
+    ];
+    extraPackages = plugins.extraPackages;
+  };
 }

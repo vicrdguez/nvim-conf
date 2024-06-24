@@ -44,14 +44,19 @@
         in
         {
           packages = rec {
-            default = nvim;
+            default = nvim-fzf;
             nvim = pkgs.nvim-custom;
+            nvim-fzf = pkgs.nvim-custom-fzf;
           };
           apps = rec {
             default = nvim;
             nvim = {
               type = "app";
               program = "${pkgs.nvim-custom}/bin/nvim";
+            };
+            nvim-fzf = {
+              type = "app";
+              program = "${pkgs.nvim-custom-fzf}/bin/nvim";
             };
           };
           devShells = {
