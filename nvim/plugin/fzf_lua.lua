@@ -64,7 +64,7 @@ nmap("<leader>'", fzf('resume'), { desc = 'Resume last search' })
 -- lsp
 nmap('gd', fzf('lsp_definitions', { sync = true, jump_to_single_result = true }), { desc = 'Go to definition' })
 nmap('gr', fzf('lsp_references', { sync = true, jump_to_single_result = true }), { desc = 'Go to reference' })
-nmap('gi', fzf('lsp_implementations', { sync = true, jump_to_single_result = true }), { desc = 'Go to implementation' })
+nmap('gi', fzf('lsp_implementations'), { desc = 'Go to implementation' })
 nmap('<leader>ds', fzf('lsp_document_symbols'), { desc = 'Search symbol in file' })
 nmap('<leader>dws', fzf('lsp_workspace_symbols'), { desc = 'Search symbol in workspace' })
 nmap('<leader>dd', fzf('diagnostics_workspace'), { desc = 'Search Diagnostics' })
