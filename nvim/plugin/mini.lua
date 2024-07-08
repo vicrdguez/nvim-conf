@@ -1,19 +1,20 @@
 -- [[ Mini statusline]]
 -- Simple statusline, might change to something fancier in the future
-local statusline = require('mini.statusline')
+-- Replace by heirline for now
+-- local statusline = require('mini.statusline')
 
-local function filename_section(args)
-    if vim.bo.buftype == 'terminal' then
-        return '%t'
-    elseif statusline.is_truncated(args.trunc_width) then
-        return '%f%m%r'
-    else
-        return '%t%m%r'
-    end
-end
+-- local function filename_section(args)
+--     if vim.bo.buftype == 'terminal' then
+--         return '%t'
+--     elseif statusline.is_truncated(args.trunc_width) then
+--         return '%f%m%r'
+--     else
+--         return '%t%m%r'
+--     end
+-- end
 
-statusline.setup { use_icons = true }
-statusline.section_filename = filename_section
+-- statusline.setup { use_icons = true }
+-- statusline.section_filename = filename_section
 
 -- [[ Mini AI ]]
 -- Better arround/inside navigation
