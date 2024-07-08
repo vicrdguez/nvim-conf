@@ -163,9 +163,14 @@ let
         devPlugins
     )
     # Append nvim and after directories to the runtimepath
+    # Prepend nvim and after directories to the runtimepath
+    # NOTE: This is done after init.lua,
+    # because of a bug in Neovim that can cause filetype plugins
+    # to be sourced prematurely, see https://github.com/neovim/neovim/issues/19008
+    # We prepend to ensure that user ftplugins are sourced before builtin ftplugins.
     + ''
-      vim.opt.rtp:append('${nvimRtp}/nvim')
-      vim.opt.rtp:append('${nvimRtp}/after')
+      vim.opt.rtp:prepend('${nvimRtp}/nvim')
+      vim.opt.rtp:prepend('${nvimRtp}/after')
     '';
 
   # Add arguments to the Neovim wrapper script
