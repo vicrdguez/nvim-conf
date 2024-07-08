@@ -48,6 +48,7 @@ rec {
   themes = with pkgs.vimPlugins; [
     kanagawa-nvim
     rose-pine
+    catppuccin-nvim
   ];
 
   misc = with pkgs.vimPlugins; [
@@ -63,6 +64,7 @@ rec {
     mini-nvim
     conform-nvim
     nvim-jdtls
+    heirline-nvim
   ];
 
   language_servers = with pkgs; [
