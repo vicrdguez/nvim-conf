@@ -183,7 +183,7 @@ require('catppuccin').setup {
         NeoTreeTabSeparatorActive = { fg = colors.mantle, bg = colors.mantle },
         NeoTreeTabSeparatorInactive = { fg = colors.crust, bg = colors.crust },
         NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
-        NormalFloat = { bg = colors.base },
+        NormalFloat = { bg = colors.mantle },
         Pmenu = { bg = colors.mantle, fg = '' },
         PmenuSel = { bg = colors.surface0, fg = '' },
         TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
