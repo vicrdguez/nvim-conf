@@ -314,6 +314,10 @@ require('catppuccin').setup {
         MiniStatuslineFilename = { fg = colors.yellow },
         MiniStatuslineFileinfo = { fg = colors.yellow },
         MiniStatuslineDevinfo = { fg = colors.pink },
+        MiniHipatternsTodo = { bg = colors.teal, fg = colors.surface0, style = { 'bold' } },
+        MiniHipatternsFixme = { bg = colors.flamingo, fg = colors.surface0, style = { 'bold' } },
+        MiniHipatternsNote = { bg = colors.lavender, fg = colors.surface0, style = { 'bold' } },
+        MiniHipatternsHack = { bg = colors.yellow, fg = colors.surface0, style = { 'bold' } },
 
         ['@annotation'] = { link = 'TSAnnotation' },
         ['@attribute'] = { link = 'TSAttribute' },
@@ -321,6 +325,10 @@ require('catppuccin').setup {
         ['@character'] = { link = 'TSCharacter' },
         ['@character.special'] = { link = 'TSCharacterSpecial' },
         ['@comment'] = { link = 'TSComment' },
+        ['@comment.todo'] = { bg = colors.teal, fg = colors.surface0, style = { 'bold' } },
+        ['@comment.error'] = { bg = colors.flamingo, fg = colors.surface0, style = { 'bold' } },
+        ['@comment.warning'] = { bg = colors.peach, fg = colors.mantle, style = { 'bold' } },
+        ['@comment.note'] = { bg = colors.lavender, fg = colors.surface0, style = { 'bold' } },
         ['@conceal'] = { link = 'Grey' },
         ['@conditional'] = { link = 'TSConditional' },
         ['@constant'] = { link = 'TSConstant' },
@@ -436,5 +444,3 @@ require('catppuccin').setup {
 vim.api.nvim_command('colorscheme catppuccin')
 
 -- vim.cmd('colorscheme kanagawa-dragon')
---
--- NOTE WARN FIXME TODO

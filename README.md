@@ -34,4 +34,8 @@ You can add it to your nixos/nix-darwin config by using the included `overlay`:
 }
 ```
 
+Themes that interest me:
+* https://github.com/cryptomilk/nightcity.nvim
+* https://github.com/sho-87/kanagawa-paper.nvim?tab=readme-ov-file
+
 [kickstart-nix.nvim]: https://github.com/mrcjkb/kickstart-nix.nvim/tree/main
