@@ -76,10 +76,12 @@ rec {
     # yamlls
     yaml-language-server
     gopls
+    rust-analyzer
   ];
   formatters = with pkgs;[
     stylua
     yamlfmt
+    rustfmt
   ];
 
   all =

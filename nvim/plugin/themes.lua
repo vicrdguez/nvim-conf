@@ -186,6 +186,7 @@ require('catppuccin').setup {
         NormalFloat = { bg = colors.mantle },
         Pmenu = { bg = colors.mantle, fg = '' },
         PmenuSel = { bg = colors.surface0, fg = '' },
+
         TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
         TelescopePreviewNormal = { bg = colors.crust },
         TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
@@ -198,6 +199,9 @@ require('catppuccin').setup {
         TelescopeResultsNormal = { bg = colors.mantle },
         TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
         TelescopeSelection = { bg = colors.surface0 },
+
+        FzfLuaBorder = { bg = colors.mantle },
+
         VertSplit = { bg = colors.base, fg = colors.surface0 },
         WhichKeyFloat = { bg = colors.mantle },
         YankHighlight = { bg = colors.surface2 },

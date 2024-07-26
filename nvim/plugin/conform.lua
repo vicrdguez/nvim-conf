@@ -7,7 +7,8 @@ require('conform').setup {
     nix = { 'nixpkgs_fmt' },
     yaml = { 'yamlfmt' },
     go = {'gofmt'},
-    terraform = {'terraform_fmt'}
+    terraform = {'terraform_fmt'},
+    rust = {'rustfmt'}
   },
   formatters = {
     ['google-java-format'] = {
