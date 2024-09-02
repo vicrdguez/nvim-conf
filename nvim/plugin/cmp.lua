@@ -58,14 +58,14 @@ end
 -- Theft end
 
 local function expand_jump_or_confirm(fallback)
-  if cmp.visible() then
-    if luasnip.locally_jumpable(-1) then
-      luasnip.expand_or_jump()
-    else
-      cmp.mapping.confirm { select = true }
-    end
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
   else
-    fallback()
+    if cmp.visible() then
+      cmp.confirm { select = true }
+    else
+      fallback()
+    end
   end
 end
 
