@@ -6,9 +6,9 @@ require('conform').setup {
     lua = { 'stylua' },
     nix = { 'nixpkgs_fmt' },
     yaml = { 'yamlfmt' },
-    go = {'gofmt'},
-    terraform = {'terraform_fmt'},
-    rust = {'rustfmt'}
+    go = { 'gofmt' },
+    terraform = { 'terraform_fmt' },
+    rust = { 'rustfmt' },
   },
   formatters = {
     ['google-java-format'] = {
@@ -21,4 +21,6 @@ require('conform').setup {
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 -- Adding the format keymap here for files that have formatter but no lsp configured
-nmap('<leader>df', require('conform').format, { desc = 'Format buffer' })
+nmap('<leader>df', function()
+  require('conform').format { lsp_fallback = true }
+end, { desc = 'Format buffer' })
