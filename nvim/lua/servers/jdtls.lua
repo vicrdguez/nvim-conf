@@ -126,15 +126,15 @@ end
 local function enable_debugger(_) -- param: bufnr
     require("jdtls").setup_dap({ hotcodereplace = "auto" })
     require("jdtls.dap").setup_dap_main_class_configs()
-    print("Jdtls Debugger enbled")
+    vim.notify("Jdtls Debugger enbled")
 end
 
 
 local function jdtls_on_attach(_, bufnr) -- params: client, bufnr
-    enable_debugger(bufnr)
+    -- enable_debugger(bufnr)
     enable_codelens(bufnr)
 
-    print("jdtls attached")
+    vim.notify("jdtls attached")
 
     local opts = { buffer = bufnr }
     nmap("<A-o>", require('jdtls').organize_imports, opts)
@@ -166,7 +166,7 @@ M.jdtls_setup = function(_) -- param: event
         "-data", paths.workspace_dir,
     }
 
-    print(table.concat(cmd, " "))
+    vim.notify(table.concat(cmd, " "))
 
     local capabilities, extended_capabilities = get_jdtls_capabilities(jdtls)
 
