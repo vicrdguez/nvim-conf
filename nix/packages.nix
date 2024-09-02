@@ -77,6 +77,7 @@ rec {
     yaml-language-server
     gopls
     rust-analyzer
+    # ltex-ls
   ];
   formatters = with pkgs;[
     stylua

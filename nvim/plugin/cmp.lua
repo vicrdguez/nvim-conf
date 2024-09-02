@@ -57,15 +57,23 @@ local lspkind_comparator = function(kind_priority)
 end
 -- Theft end
 
-local function expand_jump_or_confirm()
-  if luasnip.locally_jumpable(-1) then
-    luasnip.expand_or_jump()
+local function expand_jump_or_confirm(fallback)
+  if cmp.visible() then
+    if luasnip.locally_jumpable(-1) then
+      luasnip.expand_or_jump()
+    else
+      cmp.mapping.confirm { select = true }
+    end
+  else
+    fallback()
   end
 end
 
-local function jump_prev()
+local function jump_prev(fallback)
   if luasnip.locally_jumpable(-1) then
     luasnip.jump(-1)
+  else
+    fallback()
   end
 end
 
@@ -82,8 +90,8 @@ cmp.setup {
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
-    { name = 'buffer', keyword_length = 3 },
     { name = 'luasnip', keyword_length = 2 },
+    { name = 'buffer', keyword_length = 3 },
     { name = 'path', keyword_length = 2 },
   },
   -- https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -99,7 +107,8 @@ cmp.setup {
     --["<C-m>"] = cycle_choice(cmp_select),
     ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-f>'] = cmp.mapping.confirm { select = true },
+    -- ['<C-f>'] = cmp.mapping.confirm { select = true },
+    ['<C-f>'] = cmp.mapping(expand_jump_or_confirm),
     -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   },
