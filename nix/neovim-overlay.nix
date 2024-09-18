@@ -1,6 +1,6 @@
 # This overlay, when applied to nixpkgs, adds the final neovim derivation to nixpkgs.
 { inputs }: final: prev:
-with final.pkgs.lib; let
+let
   pkgs = final;
 
   # Use this to create a plugin from a flake input

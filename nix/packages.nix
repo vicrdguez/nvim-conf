@@ -18,6 +18,8 @@ let
       inherit pname src;
       version = src.lastModifiedDate;
     };
+
+  mkCustomPackage = file: pkgs.callPackage file { };
 in
 rec {
   cmp = with pkgs.vimPlugins; [
@@ -77,13 +79,15 @@ rec {
     yaml-language-server
     gopls
     rust-analyzer
-    # ltex-ls
+    (mkCustomPackage ./harper.nix).harper-ls
   ];
+
   formatters = with pkgs;[
     stylua
     yamlfmt
     rustfmt
   ];
+
 
   all =
     cmp ++
