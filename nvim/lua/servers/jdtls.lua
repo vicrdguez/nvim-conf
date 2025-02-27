@@ -151,7 +151,7 @@ M.jdtls_setup = function(_) -- param: event
 
 
     local cmd = {
-        vars.java_21_path .. "/bin/java",
+        vars.java_17_path .. "/bin/java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -165,8 +165,23 @@ M.jdtls_setup = function(_) -- param: event
         "-configuration", paths.platform_config,
         "-data", paths.workspace_dir,
     }
+  -- ./jdtls --java-executable /nix/store/q32388wcbqmrr7rbp9hl6sl3vlqagyzn-jdt-language-server-1.39.0/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar -data /Users/vrodriguez/.cache/jdtls/workspace/kafka-connect-explode-transform --jvm-arg=-Declipse.application=org.eclipse.jdt.ls.core.id1 --jvm-arg=-Dosgi.bundles.defaultStartLevel=4 --jvm-arg=-Declipse.product=org.eclipse.jdt.ls.core.product --jvm-arg=-Dlog.protocol=true --jvm-arg=-Dlog.level=ALL --jvm-arg=-Xmx4g
+
+    local bin_cmd = {
+        paths.jdtls_bin,
+        "--java-executable", paths.launcher_jar,
+        "-data", paths.workspace_dir,
+        "--jvm-arg=-Declipse.application=org.eclipse.jdt.ls.core.id1",
+        "--jvm-arg=-Dosgi.bundles.defaultStartLevel=4",
+        "--jvm-arg=-Declipse.product=org.eclipse.jdt.ls.core.product",
+        "--jvm-arg=-Dlog.protocol=true",
+        "--jvm-arg=-Dlog.level=ALL",
+        "--jvm-arg=-Xmx4g",
+    }
+
 
     vim.notify(table.concat(cmd, " "))
+    vim.notify(table.concat(bin_cmd, " "))
 
     local capabilities, extended_capabilities = get_jdtls_capabilities(jdtls)
 
@@ -244,7 +259,7 @@ M.jdtls_setup = function(_) -- param: event
     }
 
     jdtls.start_or_attach({
-        cmd = cmd,
+        cmd = bin_cmd,
         settings = lsp_settings,
         on_attach = jdtls_on_attach(),
         capabilities = capabilities,
