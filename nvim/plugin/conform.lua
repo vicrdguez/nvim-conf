@@ -9,7 +9,7 @@ require('conform').setup {
     go = { 'gofmt' },
     terraform = { 'terraform_fmt' },
     rust = { 'rustfmt' },
-    python = { 'ruff' },
+    python = { 'ruff_format' },
   },
   formatters = {
     ['google-java-format'] = {
