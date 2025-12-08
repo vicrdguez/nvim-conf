@@ -10,6 +10,7 @@ require('conform').setup {
     terraform = { 'terraform_fmt' },
     rust = { 'rustfmt' },
     python = { 'ruff_format' },
+    elixir = { 'mix' },
   },
   formatters = {
     ['google-java-format'] = {
