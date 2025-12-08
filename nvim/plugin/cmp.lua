@@ -58,15 +58,23 @@ end
 -- Theft end
 
 local function expand_jump_or_confirm(fallback)
-  if luasnip.expand_or_locally_jumpable() then
+  if cmp.visible() then
+    cmp.confirm { select = true }
+  elseif luasnip.expand_or_locally_jumpable() then
     luasnip.expand_or_jump()
   else
-    if cmp.visible() then
-      cmp.confirm { select = true }
-    else
-      fallback()
-    end
+    fallback()
   end
+
+  -- if luasnip.expand_or_locally_jumpable() then
+  --   luasnip.expand_or_jump()
+  -- else
+  --   if cmp.visible() then
+  --     cmp.confirm { select = true }
+  --   else
+  --     fallback()
+  --   end
+  -- end
 end
 
 local function jump_prev(fallback)

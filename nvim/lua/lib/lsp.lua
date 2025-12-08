@@ -10,7 +10,7 @@ local M = {}
 
 function M.is_ls_present(server_bin)
     if vim.fn.executable(server_bin) ~= 1 then
-        vim.notify('Language Sever ['..server_bin..'] is not present in the system', vim.log.levels.WARN)
+        -- vim.notify('Language Sever ['..server_bin..'] is not present in the system', vim.log.levels.WARN)
         return false
     end
     return true

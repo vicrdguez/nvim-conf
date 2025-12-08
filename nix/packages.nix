@@ -79,6 +79,7 @@ rec {
     yaml-language-server
     gopls
     rust-analyzer
+    # beamMinimal28Packages.elixir-ls
     (mkCustomPackage ./harper.nix).harper-ls
   ];
 
