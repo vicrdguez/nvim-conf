@@ -1,0 +1,6 @@
+vim.lsp.enable('nixd')
+vim.lsp.enable('yamlls')
+vim.lsp.enable('gopls')
+vim.lsp.enable('rust-analyzer')
+vim.lsp.enable('basedpyright')
+vim.lsp.enable('expert')
