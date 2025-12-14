@@ -69,7 +69,7 @@ local kanagawa_opts = {
     }
   end,
 }
--- require('kanagawa').setup(kanagawa_opts)
+require('kanagawa').setup(kanagawa_opts)
 
 -- Nice catppuccin-gruvbox rework.
 -- stolen from: https://github.com/catppuccin/nvim/discussions/323#discussioncomment-5287724
@@ -445,6 +445,6 @@ require('catppuccin').setup {
   },
 }
 
-vim.api.nvim_command('colorscheme catppuccin')
+-- vim.api.nvim_command('colorscheme catppuccin')
 
--- vim.cmd('colorscheme kanagawa-dragon')
+vim.cmd('colorscheme kanagawa-dragon')
