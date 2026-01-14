@@ -48,7 +48,7 @@ nmap('<leader>fr', fzf('old_files', { cwd = true }), { desc = 'Find recent files
 nmap('<leader>fg', fzf('git_files', { cwd = true }), { desc = 'Find git files' })
 -- Search
 nmap('<leader>/', fzf('grep_curbuf'), { desc = 'Search in buffer' })
-nmap('<leader>sg', fzf('live_grep_glob'), { desc = 'Live Grep project' })
+nmap('<leader>sg', fzf('live_grep'), { desc = 'Live Grep project' })
 nmap('<leader>sG', fzf('grep_project'), { desc = 'Fuzzy grep project' })
 --help
 nmap('<leader>hh', fzf('help_tags'), { desc = 'Seach help pages' })
@@ -62,8 +62,8 @@ nmap('<leader>:', fzf('command_history'), { desc = 'Command history' })
 -- others
 nmap("<leader>'", fzf('resume'), { desc = 'Resume last search' })
 -- lsp
-nmap('gd', fzf('lsp_definitions', { sync = true, jump_to_single_result = true }), { desc = 'Go to definition' })
-nmap('gr', fzf('lsp_references', { sync = true, jump_to_single_result = true }), { desc = 'Go to reference' })
+nmap('gd', fzf('lsp_definitions', { sync = true, jump1 = true }), { desc = 'Go to definition' })
+nmap('gr', fzf('lsp_references', { sync = true, jump1 = true }), { desc = 'Go to reference' })
 nmap('gi', fzf('lsp_implementations'), { desc = 'Go to implementation' })
 nmap('<leader>ds', fzf('lsp_document_symbols'), { desc = 'Search symbol in file' })
 nmap('<leader>dws', fzf('lsp_workspace_symbols'), { desc = 'Search symbol in workspace' })

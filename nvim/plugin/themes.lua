@@ -445,6 +445,6 @@ require('catppuccin').setup {
   },
 }
 
--- vim.api.nvim_command('colorscheme catppuccin')
+vim.api.nvim_command('colorscheme catppuccin')
 
-vim.cmd('colorscheme kanagawa-dragon')
+-- vim.cmd('colorscheme kanagawa-dragon')
