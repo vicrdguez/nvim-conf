@@ -109,8 +109,8 @@ require('catppuccin').setup {
     },
     mocha = {
       rosewater = '#ea6962',
-      flamingo = '#ea6962',
-      red = '#ea6962',
+      flamingo = '#c4746e',
+      red = '#E46876',
       maroon = '#ea6962',
       pink = '#d3869b',
       mauve = '#d3869b',
