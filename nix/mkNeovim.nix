@@ -103,6 +103,7 @@ let
             java_test_path = "${jdtls_extensions.java_test}",
             google_java_style = "${jdtls_extensions.eclipse-java-google-style}",
             google_java_format = "${pkgs.google-java-format}/bin/google-java-format",
+            treesitter_grammars = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}"
         }
   '';
 
