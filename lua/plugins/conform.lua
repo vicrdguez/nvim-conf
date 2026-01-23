@@ -1,5 +1,5 @@
 local nmap = require('lib.util').nmap
-local vars = require('vars')
+-- local vars = require('vars')
 
 require('conform').setup {
   formatters_by_ft = {
@@ -14,7 +14,7 @@ require('conform').setup {
   },
   formatters = {
     ['google-java-format'] = {
-      command = vars.google_java_format,
+      -- command = vars.google_java_format,
     },
   },
 }

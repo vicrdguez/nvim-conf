@@ -4,6 +4,7 @@ vim.opt.formatoptions = 'jtcroql'
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
+vim.treesitter.start()
 
 local util = require('lib.util')
 local img = require('lib.images')

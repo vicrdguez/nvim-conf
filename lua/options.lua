@@ -84,3 +84,14 @@ opt.textwidth = 0
 opt.colorcolumn = "100"
 -- opt.colorcolumn.guifg = "Grey"
 -- opt.colorcolumn.guibg = "1"
+--
+--
+-- Treesitter Folds
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
+
+-- Treesitter indents
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+-- Window borders
+vim.o.winborder = "rounded"
